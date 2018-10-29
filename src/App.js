@@ -1,26 +1,38 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import UserInput from './UserInput/UserInput';
+import UserOutput from './UserOutput/UserOutput';
 
 class App extends Component {
+  
+  state = {
+    Person: [
+      { name: "Pooja", age: "35" },
+      { name: "Sushim", age: "65" },
+      { name: "Prachi", age: "48" },
+      { name: "Neeta", age: "55" }
+    ]
+  }
+  
+  nameHandler = (event) =>{
+    this.setState({
+      Person: [
+        { name: event.target.value, age: "35" },
+        { name: "Sushim", age: "65" },
+        { name: "Prachi", age: "48" },
+        { name: "Geeta", age: "55" }
+      ]
+    })
+  }
+   
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      Learn React
+      <UserInput changed ={this.nameHandler} userName ={this.state.Person[0].name}/>
+      <UserOutput name={this.state.Person[0].name} age={this.state.Person[0].age}/>
       </div>
+      
     );
   }
 }
